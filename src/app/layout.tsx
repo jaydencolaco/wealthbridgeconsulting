@@ -1,35 +1,27 @@
-import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/themeprovider";
+import type React from "react"
+import "@/app/globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
-export const metadata: Metadata = {
-  title: "Wealthbridge Consulting",
-  description: "Your Financial Solution Center",
-};
+export const metadata = {
+  title: "Wealthbridge Consulting - Financial Services & Advisory",
+  description:
+    "Comprehensive financial solutions including banking, investment management, financial advisory, retirement planning, and more.",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
+          <ScrollToTop />
           {children}
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

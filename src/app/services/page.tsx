@@ -1,6 +1,20 @@
 import Link from "next/link"
-import { ArrowRight, Building, CreditCard, DollarSign, LineChart, PiggyBank, TrendingUp, Users } from "lucide-react"
+import {
+  ArrowRight,
+  Building,
+  CreditCard,
+  DollarSign,
+  LineChart,
+  PiggyBank,
+  TrendingUp,
+  Users,
+  Briefcase,
+  Globe,
+  BarChart,
+  ShieldCheck,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function ServicesPage() {
   return (
@@ -21,6 +35,9 @@ export default function ServicesPage() {
             <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
               About Us
             </Link>
+            <Link href="/blog" className="text-sm font-medium transition-colors hover:text-primary">
+              Blog
+            </Link>
             <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
               Contact
             </Link>
@@ -29,15 +46,13 @@ export default function ServicesPage() {
             <Link href="/contact" className="hidden md:block">
               <Button variant="outline">Book a Consultation</Button>
             </Link>
-            <Link href="/login">
-              <Button>Client Portal</Button>
-            </Link>
+            <ThemeToggle />
           </div>
         </div>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-          <div className="container px-4 md:px-6">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Financial Services</h1>
@@ -50,15 +65,64 @@ export default function ServicesPage() {
         </section>
 
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="grid gap-12 lg:gap-24">
+              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+                <div className="space-y-4">
+                  <div className="inline-block rounded-lg bg-primary/10 p-3">
+                    <Briefcase className="h-6 w-6 text-primary" />
+                  </div>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Business Solutions</h2>
+                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    Comprehensive business financial solutions to help your company thrive and grow.
+                  </p>
+                  <ul className="grid gap-2">
+                    <li className="flex items-center gap-2">
+                      <Globe className="h-5 w-5 text-primary" />
+                      <span>Business Strategy & Growth Planning</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <BarChart className="h-5 w-5 text-primary" />
+                      <span>Cash Flow Management</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <ShieldCheck className="h-5 w-5 text-primary" />
+                      <span>Risk Assessment & Management</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <DollarSign className="h-5 w-5 text-primary" />
+                      <span>Business Loans & Financing</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Users className="h-5 w-5 text-primary" />
+                      <span>Succession Planning</span>
+                    </li>
+                  </ul>
+                  <Link href="/services/business">
+                    <Button className="bg-primary hover:bg-primary/90">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex justify-center">
+                  <img
+                    src="/placeholder.svg?height=400&width=500"
+                    alt="Business Solutions"
+                    className="rounded-lg object-cover"
+                    width={500}
+                    height={400}
+                  />
+                </div>
+              </div>
+
               <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
                 <div className="space-y-4">
                   <div className="inline-block rounded-lg bg-primary/10 p-3">
                     <CreditCard className="h-6 w-6 text-primary" />
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Banking Solutions</h2>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Our comprehensive banking services are designed to meet your personal and business financial needs.
                   </p>
                   <ul className="grid gap-2">
@@ -116,7 +180,7 @@ export default function ServicesPage() {
                     <LineChart className="h-6 w-6 text-primary" />
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Investment Management</h2>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Strategic investment solutions to grow your wealth and secure your financial future.
                   </p>
                   <ul className="grid gap-2">
@@ -156,7 +220,7 @@ export default function ServicesPage() {
                     <Users className="h-6 w-6 text-primary" />
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Financial Advisory</h2>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Expert financial advice tailored to your unique circumstances and goals.
                   </p>
                   <ul className="grid gap-2">
@@ -214,7 +278,7 @@ export default function ServicesPage() {
                     <PiggyBank className="h-6 w-6 text-primary" />
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Retirement Planning</h2>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Secure your future with our comprehensive retirement planning services.
                   </p>
                   <ul className="grid gap-2">
@@ -252,7 +316,7 @@ export default function ServicesPage() {
         </section>
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Ready to Get Started?</h2>

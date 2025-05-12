@@ -13,6 +13,8 @@ import {
   Users,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { TestimonialCarousel } from "@/components/testimonial-carousel"
 
 export default function Home() {
   return (
@@ -33,6 +35,9 @@ export default function Home() {
             <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
               About Us
             </Link>
+            <Link href="/blog" className="text-sm font-medium transition-colors hover:text-primary">
+              Blog
+            </Link>
             <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
               Contact
             </Link>
@@ -41,15 +46,13 @@ export default function Home() {
             <Link href="/contact" className="hidden md:block">
               <Button variant="outline">Book a Consultation</Button>
             </Link>
-            <Link href="/login">
-              <Button>Client Portal</Button>
-            </Link>
+            <ThemeToggle />
           </div>
         </div>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-          <div className="container px-4 md:px-6">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -87,14 +90,14 @@ export default function Home() {
         </section>
 
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Our Services
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Comprehensive Financial Solutions</h2>
-                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[900px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   We offer a wide range of financial services to help you achieve your financial goals.
                 </p>
               </div>
@@ -105,7 +108,7 @@ export default function Home() {
                   <CreditCard className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">Banking Solutions</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Comprehensive banking services designed to meet your personal and business needs.
                 </p>
                 <Link href="/services/banking" className="mt-auto flex items-center text-sm font-medium text-primary">
@@ -117,7 +120,7 @@ export default function Home() {
                   <LineChart className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">Investment Management</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Strategic investment solutions to grow your wealth and secure your financial future.
                 </p>
                 <Link
@@ -132,7 +135,7 @@ export default function Home() {
                   <Users className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">Financial Advisory</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Expert financial advice tailored to your unique circumstances and goals.
                 </p>
                 <Link href="/services/advisory" className="mt-auto flex items-center text-sm font-medium text-primary">
@@ -144,7 +147,7 @@ export default function Home() {
                   <PiggyBank className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">Retirement Planning</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Secure your future with our comprehensive retirement planning services.
                 </p>
                 <Link
@@ -159,7 +162,7 @@ export default function Home() {
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">Insurance Solutions</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Protect what matters most with our comprehensive insurance solutions.
                 </p>
                 <Link href="/services/insurance" className="mt-auto flex items-center text-sm font-medium text-primary">
@@ -171,7 +174,7 @@ export default function Home() {
                   <BarChart3 className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold">Tax Planning</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Optimize your tax strategy to minimize liabilities and maximize your wealth.
                 </p>
                 <Link href="/services/tax" className="mt-auto flex items-center text-sm font-medium text-primary">
@@ -182,8 +185,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
-          <div className="container px-4 md:px-6">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-900">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
@@ -192,7 +195,7 @@ export default function Home() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                   Your Trusted Financial Partner
                 </h2>
-                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   At Wealthbridge Consulting, we combine industry expertise with personalized service to deliver
                   exceptional financial solutions.
                 </p>
@@ -232,100 +235,26 @@ export default function Home() {
         </section>
 
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Testimonials
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">What Our Clients Say</h2>
-                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[900px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Hear from our satisfied clients about their experience with Wealthbridge Consulting.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
-              <div className="flex flex-col gap-2 rounded-lg border p-6 shadow-sm">
-                <div className="flex items-center gap-2">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="h-5 w-5 text-yellow-500"
-                    >
-                      <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-500">
-                  "Wealthbridge Consulting transformed my financial outlook. Their personalized approach and expert
-                  advice helped me secure my retirement and grow my investments."
-                </p>
-                <div className="mt-4">
-                  <p className="font-semibold">Sarah Johnson</p>
-                  <p className="text-sm text-gray-500">Retirement Planning Client</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-2 rounded-lg border p-6 shadow-sm">
-                <div className="flex items-center gap-2">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="h-5 w-5 text-yellow-500"
-                    >
-                      <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-500">
-                  "As a business owner, I needed comprehensive financial solutions. Wealthbridge delivered with their
-                  banking services and investment strategies that have helped my company thrive."
-                </p>
-                <div className="mt-4">
-                  <p className="font-semibold">Michael Chen</p>
-                  <p className="text-sm text-gray-500">Business Banking Client</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-2 rounded-lg border p-6 shadow-sm">
-                <div className="flex items-center gap-2">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="h-5 w-5 text-yellow-500"
-                    >
-                      <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-500">
-                  "The financial advisors at Wealthbridge Consulting took the time to understand my goals and created a
-                  tailored plan that has significantly improved my financial health."
-                </p>
-                <div className="mt-4">
-                  <p className="font-semibold">Emily Rodriguez</p>
-                  <p className="text-sm text-gray-500">Financial Advisory Client</p>
-                </div>
-              </div>
+            <div className="mx-auto max-w-6xl mt-12">
+              <TestimonialCarousel />
             </div>
           </div>
         </section>
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
