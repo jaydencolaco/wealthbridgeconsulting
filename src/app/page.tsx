@@ -74,7 +74,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <Button variant="outline" className="border-white text-black hover:bg-black hover:text-white">
+                    <Button variant="outline" className="border-white text-black hover:bg-black hover:text-white dark:bg-white dark:text-black">
                       Contact Us
                       <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ export default function Home() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src="/placeholder.svg?height=400&width=500"
+                  src="/home.svg"
                   alt="Financial Growth"
                   className="rounded-lg object-cover"
                   width={500}
@@ -248,7 +248,7 @@ export default function Home() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src="/placeholder.svg?height=400&width=500"
+                  src="/whychooseus.svg"
                   alt="Financial Advisors"
                   className="rounded-lg object-cover"
                   width={500}

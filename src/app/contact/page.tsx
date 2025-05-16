@@ -1,14 +1,18 @@
 "use client";
 import Link from "next/link";
-import { Building, Loader2, Mail, MapPin, Phone } from "lucide-react";
+import { Building, Loader2, Mail, MapPin, Phone, ChevronDownIcon, PhoneIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Toaster } from "@/components/ui/sonner";
 import axios from "axios";
 import { toast } from "sonner";
-import { useState } from "react";
+import React, { useId, useState } from "react"
+import * as RPNInput from "react-phone-number-input"
+import flags from "react-phone-number-input/flags"
+import { cn } from "@/lib/utils"
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +22,8 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [firstname, setFirstname] = useState("");
   const [service, setService] = useState("");
+  const id = useId()
+  const [value, setValue] = useState("")
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -52,9 +58,16 @@ export default function ContactPage() {
       setIsLoading(false);
     }
     e.target.reset();
+    setEmail("");
+    setFirstname("");
+    setLastname("");
+    setMessage("");
+    setPhone("");
+    setService("")
   };
   return (
     <div className="flex flex-col min-h-screen">
+      <Toaster />
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <Link
