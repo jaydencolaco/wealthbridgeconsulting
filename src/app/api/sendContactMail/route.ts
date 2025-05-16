@@ -1,5 +1,5 @@
 import { createTransport } from "nodemailer";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function POST(request: any) {
   const emailPassword = process.env.EMAIL_PASSWORD;
@@ -17,8 +17,8 @@ export async function POST(request: any) {
 
   const mailData = {
     from: '"Jayden Colaco" <jaydensnodemailer@gmail.com>',
-    // to: "info@wealthbridgefzco.net",
-    to: "jaydencolaco20@gmail.com",
+    to: "info@wealthbridgefzco.net",
+    // to: "jaydencolaco20@gmail.com",
     subject: "Contact Request - Wealthbridge Consulting Website",
     html: `
     <div>
