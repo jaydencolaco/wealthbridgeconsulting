@@ -186,8 +186,8 @@ export default function AboutPage() {
                   width={200}
                   height={200}
                 />
-                <h3 className="text-xl font-bold">Sophia Martinez</h3>
-                <p className="text-primary font-medium">Chief Financial Officer</p>
+                <h3 className="text-xl font-bold">Sukain D'souza</h3>
+                <p className="text-primary font-medium">Founder and Managing Director</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 max-w-[300px]">
                   Sophia brings 20 years of financial expertise and strategic insight to our leadership team.
                 </p>

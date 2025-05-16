@@ -1,7 +1,7 @@
 import type React from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { ScrollToTop } from "@/components//scroll-to-top"
 
 export const metadata = {
   title: "Wealthbridge Consulting - Financial Services & Advisory",
