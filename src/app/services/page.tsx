@@ -3,53 +3,131 @@ import {
   ArrowRight,
   Building,
   CreditCard,
-  DollarSign,
   LineChart,
   PiggyBank,
-  TrendingUp,
   Users,
   Briefcase,
-  Globe,
-  BarChart,
-  ShieldCheck,
+  Shield,
+  BarChart3,
+  Handshake,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Navbar } from "@/components/navbar"
 
 export default function ServicesPage() {
+  const services = [
+    {
+      id: "banking",
+      icon: <CreditCard className="h-6 w-6 text-primary" />,
+      title: "Banking Solutions",
+      description:
+        "Our comprehensive banking services are designed to meet your personal and business financial needs.",
+      features: [
+        "Personal and Business Checking Accounts",
+        "Savings and Money Market Accounts",
+        "Certificates of Deposit (CDs)",
+        "Business Loans and Lines of Credit",
+        "Merchant Services",
+      ],
+    },
+    {
+      id: "investment",
+      icon: <LineChart className="h-6 w-6 text-primary" />,
+      title: "Investment Management",
+      description: "Strategic investment solutions to grow your wealth and secure your financial future.",
+      features: [
+        "Portfolio Management",
+        "Retirement Accounts (401(k), IRA)",
+        "Mutual Funds and ETFs",
+        "Stocks and Bonds",
+        "Alternative Investments",
+      ],
+    },
+    {
+      id: "advisory",
+      icon: <Users className="h-6 w-6 text-primary" />,
+      title: "Financial Advisory",
+      description: "Expert financial advice tailored to your unique circumstances and goals.",
+      features: [
+        "Comprehensive Financial Planning",
+        "Wealth Management",
+        "Estate Planning",
+        "Tax Planning Strategies",
+        "Risk Management",
+      ],
+    },
+    {
+      id: "business",
+      icon: <Briefcase className="h-6 w-6 text-primary" />,
+      title: "Business Solutions",
+      description: "Comprehensive business financial solutions to help your company thrive and grow.",
+      features: [
+        "Business Strategy & Growth Planning",
+        "Cash Flow Management",
+        "Risk Assessment & Management",
+        "Business Loans & Financing",
+        "Succession Planning",
+      ],
+    },
+    {
+      id: "retirement",
+      icon: <PiggyBank className="h-6 w-6 text-primary" />,
+      title: "Retirement Planning",
+      description: "Secure your future with our comprehensive retirement planning services.",
+      features: [
+        "Retirement Income Strategies",
+        "401(k) and IRA Management",
+        "Pension Planning",
+        "Social Security Optimization",
+        "Long-term Care Planning",
+      ],
+    },
+    {
+      id: "insurance",
+      icon: <Shield className="h-6 w-6 text-primary" />,
+      title: "Insurance Solutions",
+      description: "Protect what matters most with our comprehensive insurance solutions.",
+      features: [
+        "Life Insurance",
+        "Health Insurance",
+        "Property & Casualty Insurance",
+        "Disability Insurance",
+        "Long-term Care Insurance",
+      ],
+    },
+    {
+      id: "tax",
+      icon: <BarChart3 className="h-6 w-6 text-primary" />,
+      title: "Tax Planning",
+      description: "Optimize your tax strategy to minimize liabilities and maximize your wealth.",
+      features: [
+        "Tax-Efficient Investment Strategies",
+        "Income Tax Planning",
+        "Estate Tax Planning",
+        "Business Tax Strategies",
+        "Tax-Loss Harvesting",
+      ],
+    },
+    {
+      id: "setup",
+      icon: <Handshake className="h-6 w-6 text-primary" />,
+      title: "Setup and Acquisition",
+      description: "Expert guidance for starting a new business or acquiring an existing one.",
+      features: [
+        "Business Formation & Structure",
+        "Acquisition Financing",
+        "Due Diligence",
+        "Valuation Services",
+        "Post-Acquisition Integration",
+      ],
+    },
+  ]
+
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
-            <Building className="h-6 w-6" />
-            <span>Wealthbridge Consulting</span>
-          </Link>
-          <nav className="hidden md:flex gap-6">
-            <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
-              Home
-            </Link>
-            <Link href="/services" className="text-sm font-medium transition-colors hover:text-primary text-primary">
-              Services
-            </Link>
-            <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
-              About Us
-            </Link>
-            <Link href="/blog" className="text-sm font-medium transition-colors hover:text-primary">
-              Blog
-            </Link>
-            <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
-              Contact
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link href="/contact" className="hidden md:block">
-              <Button variant="outline">Book a Consultation</Button>
-            </Link>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+      <Navbar/>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white">
           <div className="container px-4 md:px-6 mx-auto">
@@ -66,256 +144,123 @@ export default function ServicesPage() {
 
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 mx-auto">
-            <div className="grid gap-12 lg:gap-24">
-              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                <div className="space-y-4">
-                  <div className="inline-block rounded-lg bg-primary/10 p-3">
-                    <Briefcase className="h-6 w-6 text-primary" />
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Business Solutions</h2>
-                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Comprehensive business financial solutions to help your company thrive and grow.
-                  </p>
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <Globe className="h-5 w-5 text-primary" />
-                      <span>Business Strategy & Growth Planning</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <BarChart className="h-5 w-5 text-primary" />
-                      <span>Cash Flow Management</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ShieldCheck className="h-5 w-5 text-primary" />
-                      <span>Risk Assessment & Management</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <DollarSign className="h-5 w-5 text-primary" />
-                      <span>Business Loans & Financing</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      <span>Succession Planning</span>
-                    </li>
-                  </ul>
-                  <Link href="/services/business">
-                    <Button className="bg-primary hover:bg-primary/90">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <div className="flex justify-center">
-                  <img
-                    src="/placeholder.svg?height=400&width=500"
-                    alt="Business Solutions"
-                    className="rounded-lg object-cover"
-                    width={500}
-                    height={400}
-                  />
-                </div>
+            <Tabs useHash defaultValue="banking" className="w-full">
+              <div className="flex justify-center mb-8">
+                <TabsList className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
+                  {services.map((service) => (
+                    <TabsTrigger key={service.id} value={service.id}>
+                      {service.title}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
               </div>
 
-              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                <div className="space-y-4">
-                  <div className="inline-block rounded-lg bg-primary/10 p-3">
-                    <CreditCard className="h-6 w-6 text-primary" />
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Banking Solutions</h2>
-                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Our comprehensive banking services are designed to meet your personal and business financial needs.
-                  </p>
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <DollarSign className="h-5 w-5 text-primary" />
-                      <span>Personal and Business Checking Accounts</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <DollarSign className="h-5 w-5 text-primary" />
-                      <span>Savings and Money Market Accounts</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <DollarSign className="h-5 w-5 text-primary" />
-                      <span>Certificates of Deposit (CDs)</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <DollarSign className="h-5 w-5 text-primary" />
-                      <span>Business Loans and Lines of Credit</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <DollarSign className="h-5 w-5 text-primary" />
-                      <span>Merchant Services</span>
-                    </li>
-                  </ul>
-                  <Link href="/services/banking">
-                    <Button className="bg-primary hover:bg-primary/90">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <div className="flex justify-center">
-                  <img
-                    src="/placeholder.svg?height=400&width=500"
-                    alt="Banking Solutions"
-                    className="rounded-lg object-cover"
-                    width={500}
-                    height={400}
-                  />
-                </div>
-              </div>
+              {services.map((service) => (
+                <TabsContent key={service.id} value={service.id} className="mt-6">
+                  <Card>
+                    <CardHeader>
+                      <div className="flex items-center gap-4">
+                        <div className="rounded-full bg-primary/10 p-3">{service.icon}</div>
+                        <div>
+                          <CardTitle className="text-2xl">{service.title}</CardTitle>
+                          <CardDescription className="text-lg mt-2">{service.description}</CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid gap-6 md:grid-cols-2">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-4">Key Features</h3>
+                          <ul className="space-y-2">
+                            {service.features.map((feature, index) => (
+                              <li key={index} className="flex items-start gap-2">
+                                <div className="rounded-full bg-primary/10 p-1 mt-0.5">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="text-primary"
+                                  >
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                  </svg>
+                                </div>
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold mb-4">How We Can Help</h3>
+                          <p className="text-gray-500 dark:text-gray-400 mb-4">
+                            Our team of experienced professionals will work closely with you to understand your unique
+                            needs and develop customized solutions that align with your financial goals.
+                          </p>
+                          <div className="flex flex-col gap-4 sm:flex-row">
+                            <Button variant="outline" className="bg-white text-black hover:bg-black hover:text-white  border-white dark:hover:bg-black dark:hover:text-white">
+                              Learn More
+                              <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                            <Link href="/contact">
+                              <Button variant="outline" className="bg-white text-black hover:bg-black hover:text-white dark:hover:text-white dark:hover:bg-black">Contact Us</Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+              ))}
+            </Tabs>
 
-              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                <div className="flex justify-center order-last lg:order-first">
-                  <img
-                    src="/placeholder.svg?height=400&width=500"
-                    alt="Investment Management"
-                    className="rounded-lg object-cover"
-                    width={500}
-                    height={400}
-                  />
-                </div>
-                <div className="space-y-4">
-                  <div className="inline-block rounded-lg bg-primary/10 p-3">
-                    <LineChart className="h-6 w-6 text-primary" />
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Investment Management</h2>
-                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Strategic investment solutions to grow your wealth and secure your financial future.
-                  </p>
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-primary" />
-                      <span>Portfolio Management</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-primary" />
-                      <span>Retirement Accounts (401(k), IRA)</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-primary" />
-                      <span>Mutual Funds and ETFs</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-primary" />
-                      <span>Stocks and Bonds</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-primary" />
-                      <span>Alternative Investments</span>
-                    </li>
-                  </ul>
-                  <Link href="/services/investments">
-                    <Button className="bg-primary hover:bg-primary/90">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
+            {/* <div className="mt-16">
+              <h2 className="text-2xl font-bold text-center mb-8">All Our Services</h2>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {services.map((service) => (
+                  <Card key={service.id} className="flex flex-col h-full">
+                    <CardHeader>
+                      <div className="rounded-full bg-primary/10 p-3 w-fit mb-4">{service.icon}</div>
+                      <CardTitle>{service.title}</CardTitle>
+                      <CardDescription className="line-clamp-2">{service.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-1">
+                      <ul className="space-y-1 text-sm">
+                        {service.features.slice(0, 3).map((feature, index) => (
+                          <li key={index} className="flex items-center gap-2">
+                            <div className="rounded-full bg-primary/10 p-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="text-primary"
+                              >
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                              </svg>
+                            </div>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
-
-              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                <div className="space-y-4">
-                  <div className="inline-block rounded-lg bg-primary/10 p-3">
-                    <Users className="h-6 w-6 text-primary" />
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Financial Advisory</h2>
-                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Expert financial advice tailored to your unique circumstances and goals.
-                  </p>
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      <span>Comprehensive Financial Planning</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      <span>Wealth Management</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      <span>Estate Planning</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      <span>Tax Planning Strategies</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
-                      <span>Risk Management</span>
-                    </li>
-                  </ul>
-                  <Link href="/services/advisory">
-                    <Button className="bg-primary hover:bg-primary/90">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <div className="flex justify-center">
-                  <img
-                    src="/placeholder.svg?height=400&width=500"
-                    alt="Financial Advisory"
-                    className="rounded-lg object-cover"
-                    width={500}
-                    height={400}
-                  />
-                </div>
-              </div>
-
-              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                <div className="flex justify-center order-last lg:order-first">
-                  <img
-                    src="/placeholder.svg?height=400&width=500"
-                    alt="Retirement Planning"
-                    className="rounded-lg object-cover"
-                    width={500}
-                    height={400}
-                  />
-                </div>
-                <div className="space-y-4">
-                  <div className="inline-block rounded-lg bg-primary/10 p-3">
-                    <PiggyBank className="h-6 w-6 text-primary" />
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Retirement Planning</h2>
-                  <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Secure your future with our comprehensive retirement planning services.
-                  </p>
-                  <ul className="grid gap-2">
-                    <li className="flex items-center gap-2">
-                      <PiggyBank className="h-5 w-5 text-primary" />
-                      <span>Retirement Income Strategies</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <PiggyBank className="h-5 w-5 text-primary" />
-                      <span>401(k) and IRA Management</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <PiggyBank className="h-5 w-5 text-primary" />
-                      <span>Pension Planning</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <PiggyBank className="h-5 w-5 text-primary" />
-                      <span>Social Security Optimization</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <PiggyBank className="h-5 w-5 text-primary" />
-                      <span>Long-term Care Planning</span>
-                    </li>
-                  </ul>
-                  <Link href="/services/retirement">
-                    <Button className="bg-primary hover:bg-primary/90">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-primary-foreground">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -326,7 +271,7 @@ export default function ServicesPage() {
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link href="/contact">
-                  <Button className="bg-white text-primary hover:bg-white/90">
+                  <Button variant="outline" className="bg-white border-white text-black hover:bg-black hover:text-white">
                     Book a Consultation
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

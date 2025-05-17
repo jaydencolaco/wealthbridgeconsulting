@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ArrowRight, Building, Calendar, Clock, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Navbar } from "@/components/navbar"
 
 interface BlogPost {
   id: string
@@ -112,37 +112,7 @@ export default function BlogPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
-            <Building className="h-6 w-6" />
-            <span>Wealthbridge Consulting</span>
-          </Link>
-          <nav className="hidden md:flex gap-6">
-            <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
-              Home
-            </Link>
-            <Link href="/services" className="text-sm font-medium transition-colors hover:text-primary">
-              Services
-            </Link>
-            <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
-              About Us
-            </Link>
-            <Link href="/blog" className="text-sm font-medium transition-colors hover:text-primary text-primary">
-              Blog
-            </Link>
-            <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
-              Contact
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link href="/contact" className="hidden md:block">
-              <Button variant="outline">Book a Consultation</Button>
-            </Link>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+     <Navbar/>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white">
           <div className="container px-4 md:px-6 mx-auto">

@@ -1,18 +1,16 @@
 "use client";
 import Link from "next/link";
-import { Building, Loader2, Mail, MapPin, Phone, ChevronDownIcon, PhoneIcon } from "lucide-react";
+import { Building, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Toaster } from "@/components/ui/sonner";
 import axios from "axios";
 import { toast } from "sonner";
-import React, { useId, useState } from "react"
-import * as RPNInput from "react-phone-number-input"
-import flags from "react-phone-number-input/flags"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import { PhoneNumberInput } from "@/components/PhoneNumberInput";
+import { Navbar } from "@/components/navbar";
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,8 +20,6 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [firstname, setFirstname] = useState("");
   const [service, setService] = useState("");
-  const id = useId()
-  const [value, setValue] = useState("")
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -63,60 +59,12 @@ export default function ContactPage() {
     setLastname("");
     setMessage("");
     setPhone("");
-    setService("")
+    setService("");
   };
   return (
     <div className="flex flex-col min-h-screen">
       <Toaster />
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-bold text-xl text-primary"
-          >
-            <Building className="h-6 w-6" />
-            <span>Wealthbridge Consulting</span>
-          </Link>
-          <nav className="hidden md:flex gap-6">
-            <Link
-              href="/"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Home
-            </Link>
-            <Link
-              href="/services"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Services
-            </Link>
-            <Link
-              href="/about"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/contact"
-              className="text-sm font-medium transition-colors hover:text-primary text-primary"
-            >
-              Contact
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link href="/contact" className="hidden md:block">
-              <Button variant="outline">Book a Consultation</Button>
-            </Link>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+      <Navbar/>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white">
           <div className="container px-4 md:px-6 mx-auto">
@@ -188,7 +136,7 @@ export default function ContactPage() {
                       required
                     />
                   </div>
-                  <div className="space-y-2">
+                  {/* <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
                     <Input
                       type="tel"
@@ -207,7 +155,16 @@ export default function ContactPage() {
                       title="Enter a valid 10-digit phone number"
                       placeholder="Enter your phone number"
                     />
+                  </div> */}
+                  <div className="space-y-2">
+                    <PhoneNumberInput
+                      value={phone}
+                      onChange={(value) => setPhone(value)}
+                      label="Your Contact Number"
+                      placeholder="e.g. +91 98765 43210"
+                    />
                   </div>
+
                   <div className="space-y-2">
                     <Label htmlFor="service">Service of Interest</Label>
                     <select
@@ -249,7 +206,7 @@ export default function ContactPage() {
                   {isLoading ? (
                     <Button
                       type="submit"
-                      className="bg-black text-white border hover:border-b-black hover:text-black"
+                      className="bg-black text-white border hover:border-b-black hover:text-black dark:bg-white dark:"
                     >
                       <Loader2 className="animate-spin" />
                       Send Message
@@ -301,9 +258,6 @@ export default function ContactPage() {
                       <h3 className="font-bold">Email</h3>
                       <p className="text-gray-500 dark:text-gray-400">
                         info@wealthbridgefzco.net
-                      </p>
-                      <p className="text-gray-500 dark:text-gray-400">
-                        support@wealthbridge.com
                       </p>
                     </div>
                   </div>
