@@ -1,7 +1,8 @@
+"use client"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import {
   ArrowRight,
-  Building,
   CreditCard,
   LineChart,
   PiggyBank,
@@ -15,8 +16,38 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+import { useState, useEffect } from "react"
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+}
 
 export default function ServicesPage() {
+  const [activeTab, setActiveTab] = useState("banking")
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Check if we're on mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    // Get hash from URL
+    const hash = window.location.hash.replace("#", "")
+    if (hash && services.some((service) => service.id === hash)) {
+      setActiveTab(hash)
+    }
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
+  }, [])
+
   const services = [
     {
       id: "banking",
@@ -125,11 +156,22 @@ export default function ServicesPage() {
     },
   ]
 
+  const handleTabChange = (value: string) => {
+    setActiveTab(value)
+    // Update URL hash
+    window.history.pushState(null, "", `#${value}`)
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar/>
+      <Navbar />
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white">
+        <motion.section
+          className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white"
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+        >
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -140,127 +182,163 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 mx-auto">
-            <Tabs useHash defaultValue="banking" className="w-full">
-              <div className="flex justify-center mb-8">
-                <TabsList className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
-                  {services.map((service) => (
-                    <TabsTrigger key={service.id} value={service.id}>
-                      {service.title}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+            <Tabs value={activeTab} onValueChange={handleTabChange} useHash defaultValue="banking" className="w-full">
+              <div className="mb-8">
+                <div className="overflow-x-auto pb-3">
+                  <TabsList className="inline-flex h-auto flex-nowrap p-1 gap-1">
+                    {services.map((service) => (
+                      <TabsTrigger
+                        key={service.id}
+                        value={service.id}
+                        className="whitespace-nowrap px-3 py-1.5 text-sm"
+                      >
+                        {isMobile ? service.title.split(" ")[0] : service.title}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </div>
               </div>
 
               {services.map((service) => (
                 <TabsContent key={service.id} value={service.id} className="mt-6">
-                  <Card>
-                    <CardHeader>
-                      <div className="flex items-center gap-4">
-                        <div className="rounded-full bg-primary/10 p-3">{service.icon}</div>
-                        <div>
-                          <CardTitle className="text-2xl">{service.title}</CardTitle>
-                          <CardDescription className="text-lg mt-2">{service.description}</CardDescription>
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid gap-6 md:grid-cols-2">
-                        <div>
-                          <h3 className="text-lg font-semibold mb-4">Key Features</h3>
-                          <ul className="space-y-2">
-                            {service.features.map((feature, index) => (
-                              <li key={index} className="flex items-start gap-2">
-                                <div className="rounded-full bg-primary/10 p-1 mt-0.5">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="text-primary"
-                                  >
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                  </svg>
-                                </div>
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold mb-4">How We Can Help</h3>
-                          <p className="text-gray-500 dark:text-gray-400 mb-4">
-                            Our team of experienced professionals will work closely with you to understand your unique
-                            needs and develop customized solutions that align with your financial goals.
-                          </p>
-                          <div className="flex flex-col gap-4 sm:flex-row">
-                            <Button variant="outline" className="bg-white text-black hover:bg-black hover:text-white  border-white dark:hover:bg-black dark:hover:text-white">
-                              Learn More
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                            <Link href="/contact">
-                              <Button variant="outline" className="bg-white text-black hover:bg-black hover:text-white dark:hover:text-white dark:hover:bg-black">Contact Us</Button>
-                            </Link>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Card>
+                      <CardHeader>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                          <div className="rounded-full bg-primary/10 p-3 w-fit">{service.icon}</div>
+                          <div>
+                            <CardTitle className="text-xl sm:text-2xl">{service.title}</CardTitle>
+                            <CardDescription className="text-base sm:text-lg mt-2">
+                              {service.description}
+                            </CardDescription>
                           </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="grid gap-6 md:grid-cols-2">
+                          <div>
+                            <h3 className="text-lg font-semibold mb-4">Key Features</h3>
+                            <ul className="space-y-2">
+                              {service.features.map((feature, index) => (
+                                <li key={index} className="flex items-start gap-2">
+                                  <div className="rounded-full bg-primary/10 p-1 mt-0.5">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth="2"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      className="text-primary"
+                                    >
+                                      <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                  </div>
+                                  <span>{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="mt-6 md:mt-0">
+                            <h3 className="text-lg font-semibold mb-4">How We Can Help</h3>
+                            <p className="text-gray-500 dark:text-gray-400 mb-4">
+                              Our team of experienced professionals will work closely with you to understand your unique
+                              needs and develop customized solutions that align with your financial goals.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                              <Button className="bg-primary hover:bg-primary/90">
+                                Learn More
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                              <Link href="/contact">
+                                <Button variant="outline">Contact Us</Button>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 </TabsContent>
               ))}
             </Tabs>
 
-            {/* <div className="mt-16">
+            <motion.div
+              className="mt-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
+            >
               <h2 className="text-2xl font-bold text-center mb-8">All Our Services</h2>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {services.map((service) => (
-                  <Card key={service.id} className="flex flex-col h-full">
-                    <CardHeader>
-                      <div className="rounded-full bg-primary/10 p-3 w-fit mb-4">{service.icon}</div>
-                      <CardTitle>{service.title}</CardTitle>
-                      <CardDescription className="line-clamp-2">{service.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex-1">
-                      <ul className="space-y-1 text-sm">
-                        {service.features.slice(0, 3).map((feature, index) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <div className="rounded-full bg-primary/10 p-1">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="12"
-                                height="12"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="text-primary"
-                              >
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                              </svg>
-                            </div>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+                {services.map((service, index) => (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Card
+                      className="flex flex-col h-full cursor-pointer hover:shadow-md transition-shadow"
+                      onClick={() => handleTabChange(service.id)}
+                    >
+                      <CardHeader>
+                        <div className="rounded-full bg-primary/10 p-3 w-fit mb-4">{service.icon}</div>
+                        <CardTitle>{service.title}</CardTitle>
+                        <CardDescription className="line-clamp-2">{service.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="flex-1">
+                        <ul className="space-y-1 text-sm">
+                          {service.features.slice(0, 3).map((feature, index) => (
+                            <li key={index} className="flex items-center gap-2">
+                              <div className="rounded-full bg-primary/10 p-1">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="12"
+                                  height="12"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-primary"
+                                >
+                                  <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                              </div>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 ))}
               </div>
-            </div> */}
+            </motion.div>
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-primary-foreground">
+        <motion.section
+          className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-primary-foreground"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -271,7 +349,10 @@ export default function ServicesPage() {
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link href="/contact">
-                  <Button variant="outline" className="bg-white border-white text-black hover:bg-black hover:text-white">
+                  <Button
+                    variant="outline"
+                    className="bg-white border-white text-black hover:bg-black hover:text-white"
+                  >
                     Book a Consultation
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -279,27 +360,10 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
-      <footer className="w-full border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <div className="flex items-center gap-2 text-primary">
-            <Building className="h-6 w-6" />
-            <p className="text-sm font-medium">Wealthbridge Consulting © 2025</p>
-          </div>
-          <div className="flex gap-4 md:gap-6">
-            <Link href="/privacy" className="text-xs underline-offset-4 hover:underline">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-xs underline-offset-4 hover:underline">
-              Terms of Service
-            </Link>
-            <Link href="/contact" className="text-xs underline-offset-4 hover:underline">
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
+
