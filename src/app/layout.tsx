@@ -2,6 +2,7 @@ import type React from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components//scroll-to-top"
+import { MobileCTA } from "@/components/mobile-cta"
 
 export const metadata = {
   title: "Wealthbridge Consulting - Financial Services & Advisory",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
           <ScrollToTop />
           {children}
+          <MobileCTA />
         </ThemeProvider>
       </body>
     </html>

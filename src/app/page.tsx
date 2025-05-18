@@ -18,6 +18,21 @@ import { Button } from "@/components/ui/button";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { Navbar } from "@/components/navbar";
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -99,7 +114,7 @@ export default function Home() {
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
+                <div className="inline-block text-black dark:text-white rounded-lg bg-white dark:bg-primary px-3 py-1 ">
                   Our Services
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -249,7 +264,7 @@ export default function Home() {
           <div className="container px-4 md:px-6 mx-auto">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
+                <div className="inline-block rounded-lg border-2 border-black dark:border-white px-3 py-1 text-sm dark:text-white ">
                   Why Choose Us
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -284,7 +299,10 @@ export default function Home() {
                   </li>
                 </ul>
                 <Link href="/about">
-                  <Button className="bg-primary hover:bg-primary/90">
+                  <Button
+                    variant="outline"
+                    className="bg-white text-black hover:bg-black hover:text-white"
+                  >
                     Learn More About Us
                   </Button>
                 </Link>
