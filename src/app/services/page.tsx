@@ -18,6 +18,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useState, useEffect } from "react"
+import { cn } from "@/lib/utils"
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -186,7 +187,7 @@ export default function ServicesPage() {
 
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 mx-auto">
-            <Tabs value={activeTab} onValueChange={handleTabChange} useHash defaultValue="banking" className="w-full">
+            <Tabs value={activeTab} onValueChange={handleTabChange} useHash defaultValue="banking" className=" w-full">
               <div className="mb-8">
                 <div className="overflow-x-auto pb-3">
                   <TabsList className="inline-flex h-auto flex-nowrap p-1 gap-1">
@@ -194,8 +195,13 @@ export default function ServicesPage() {
                       <TabsTrigger
                         key={service.id}
                         value={service.id}
-                        className="whitespace-nowrap px-3 py-1.5 text-sm"
-                      >
+                        className={cn(
+                          "whitespace-nowrap px-3 py-1.5 text-sm transition-colors rounded-md",
+                          "hover:bg-muted hover:text-foreground",
+                          "dark:hover:bg-white dark:hover:text-black",
+                          "data-[state=active]:bg-primary data-[state=active]:text-white",
+                          "dark:data-[state=active]:bg-white dark:data-[state=active]:text-black"
+                        )}                      >
                         {isMobile ? service.title.split(" ")[0] : service.title}
                       </TabsTrigger>
                     ))}
@@ -274,7 +280,7 @@ export default function ServicesPage() {
               ))}
             </Tabs>
 
-            <motion.div
+            {/* <motion.div
               className="mt-16"
               initial="hidden"
               whileInView="visible"
@@ -291,7 +297,7 @@ export default function ServicesPage() {
                     transition={{ delay: index * 0.1 }}
                   >
                     <Card
-                      className="flex flex-col h-full cursor-pointer hover:shadow-md transition-shadow"
+                      className="flex flex-col h-full cursor-pointer hover:shadow-md dark: transition-shadow "
                       onClick={() => handleTabChange(service.id)}
                     >
                       <CardHeader>
@@ -328,7 +334,7 @@ export default function ServicesPage() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </section>
 

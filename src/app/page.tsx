@@ -18,21 +18,6 @@ import { Button } from "@/components/ui/button";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { Navbar } from "@/components/navbar";
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">

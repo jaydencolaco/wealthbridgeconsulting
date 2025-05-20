@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 
@@ -11,7 +11,7 @@ type TabsProps = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> & {
 }
 
 const Tabs = ({ useHash = false, ...props }: TabsProps) => {
-  const router = useRouter()
+  // const router = useRouter()
   const pathname = usePathname()
   const [value, setValue] = React.useState(props.value ?? props.defaultValue)
 

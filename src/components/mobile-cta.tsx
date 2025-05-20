@@ -41,7 +41,7 @@ export function MobileCTA() {
             className="fixed bottom-4 left-4 right-4 z-40 md:hidden"
           >
             <Link href="/contact">
-              <Button className="w-full bg-primary hover:bg-primary/90 shadow-lg">Book a Consultation</Button>
+              <Button className="w-full bg-black text-white hover:bg-black hover:text-white dark:border-white dark:bg-white dark:text-black shadow-lg">Book a Consultation</Button>
             </Link>
           </motion.div>
         )}
@@ -56,10 +56,10 @@ export function MobileCTA() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="fixed bottom-4 right-4 z-40 rounded-full bg-primary p-2 text-white shadow-lg md:bottom-8 md:right-8"
+            className="fixed bottom-4 right-4 z-40 rounded-full bg-white dark:bg-black p-2 text-white shadow-lg md:bottom-8 md:right-8"
             aria-label="Scroll to top"
           >
-            <ArrowUp className="h-5 w-5" />
+            <ArrowUp className="h-5 text-black dark:text-white w-5" />
           </motion.button>
         )}
       </AnimatePresence>
