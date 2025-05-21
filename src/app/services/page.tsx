@@ -19,6 +19,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import Head from "next/head"
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -165,6 +166,11 @@ export default function ServicesPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
+       <Head>
+        <title>Our Services &dash; Expert Financial & Business Consulting | WealthBridge</title>
+        <meta name="description" content="Explore our tailored consulting services in financial planning, business strategy, tax advisory, and more. We help clients across Asia and Europe achieve lasting success." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Navbar />
       <main className="flex-1">
         <motion.section

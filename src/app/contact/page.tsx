@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { PhoneNumberInput } from "@/components/PhoneNumberInput";
 import { Navbar } from "@/components/navbar";
+import Head from "next/head";
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -63,6 +64,11 @@ export default function ContactPage() {
   };
   return (
     <div className="flex flex-col min-h-screen">
+       <Head>
+        <title>Contact Us &dash; Start Your Journey with WealthBridge Consulting</title>
+        <meta name="description" content="Ready to secure your future? Contact WealthBridge Consulting today for personalized guidance and expert advice on your business or financial goals." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Toaster />
       <Navbar/>
       <main className="flex-1">

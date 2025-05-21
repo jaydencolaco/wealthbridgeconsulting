@@ -5,6 +5,7 @@ import { useParams } from "next/navigation"
 import { ArrowLeft, Building, Calendar, Clock, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import BlogHeader from "@/components/blog-header"
 
 interface BlogPost {
   id: string
@@ -23,6 +24,7 @@ export default function BlogPostPage() {
   const slug = params.slug as string
   const [post, setPost] = useState<BlogPost | null>(null)
   const [loading, setLoading] = useState(true)
+
 
   // Default blog posts
   const defaultBlogPosts = [
@@ -198,15 +200,7 @@ export default function BlogPostPage() {
   if (loading) {
     return (
       <div className="flex flex-col min-h-screen">
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className="container flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
-              <Building className="h-6 w-6" />
-              <span>Wealthbridge Consulting</span>
-            </Link>
-            <ThemeToggle />
-          </div>
-        </header>
+        <BlogHeader/>
         <main className="flex-1 container py-12">
           <div className="flex justify-center items-center h-full">
             <p>Loading article...</p>

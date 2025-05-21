@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from 'next/head';
 import {
   ArrowRight,
   BarChart3,
@@ -21,6 +22,11 @@ import { Navbar } from "@/components/navbar";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <Head>
+        <title>WealthBridge Consulting &dash; Shaping Dreams, Securing Futures</title>
+        <meta name="description" content="WealthBridge Consulting empowers individuals and businesses with strategic financial solutions, personalized guidance, and global expertise to secure a prosperous future." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Navbar />
 
       <main className="flex-1">

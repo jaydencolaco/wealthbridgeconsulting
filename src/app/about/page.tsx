@@ -3,10 +3,16 @@ import { ArrowRight, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
+import Head from "next/head";
 
 export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen">
+      <Head>
+        <title>About Us &dash; Trusted Advisors at WealthBridge Consulting</title>
+        <meta name="description" content="Discover the story, mission, and experienced team behind WealthBridge Consulting. We&apos;re committed to guiding your financial journey with integrity and insight." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
     <Navbar/>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white">

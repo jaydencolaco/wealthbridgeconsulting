@@ -8,6 +8,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { Menu } from "lucide-react";
+import useHasMounted from "@/lib/useHasMounted"; // or "@/hooks/useHasMounted"
+
 
 export function Navbar() {
   const pathname = usePathname();
@@ -22,29 +24,15 @@ export function Navbar() {
 
   const [open, setOpen] = useState(false);
   const { theme } = useTheme();
+  const hasMounted = useHasMounted();
+
+  if (!hasMounted) return null; // Or show a skeleton loader if you prefer
 
   const logoSrc = theme === "dark" ? "/logodark.png" : "/logo.png";
-
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        {/* <div className="flex items-center gap-2">
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-bold text-xl text-primary"
-          >
-            <img
-                  src="/logo.png"
-                  alt="logo"
-                  className="rounded-lg object-cover"
-                  width={100}
-                  height={100}
-                />
-            <span className="hidden sm:inline">WealthBridge Consulting</span>
-            <span className="sm:hidden">WealthBridge</span>
-          </Link>
-        </div> */}
-        <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
       <Link
         href="/"
         className="flex items-center gap-2 font-bold text-xl text-primary"
@@ -85,19 +73,20 @@ export function Navbar() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[80%] sm:w-[350px] text-white bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 dark:text-white">
+            <SheetContent
+              side="left"
+              className="w-[80%] sm:w-[350px] text-white bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 dark:text-white"
+            >
               <div className="flex flex-col space-y-6 pt-6 pl-5">
                 <div className="flex items-center space-x-2">
-                <img
-                  src="/logomobile.png"
-                  alt="logo mobile"
-                  className="rounded-lg object-cover"
-                  width={50}
-                  height={50}
-                />
-                  <span className="text-lg font-bold">
-                    WealthBridge 
-                  </span>
+                  <img
+                    src="/logomobile.png"
+                    alt="logo mobile"
+                    className="rounded-lg object-cover"
+                    width={50}
+                    height={50}
+                  />
+                  <span className="text-lg font-bold">WealthBridge</span>
                 </div>
 
                 <nav className="flex flex-col space-y-4">
@@ -139,15 +128,19 @@ export function Navbar() {
                 </nav>
 
                 <div className="flex flex-col space-y-3 pt-4">
-                <Link
+                  <Link
                     href="https://wa.me/+971547221116?text=Enquire%20Now"
                     className="text-sm font-medium hover:text-primary"
                     onClick={() => setOpen(false)}
                   >
-                  <Button variant="outline"
-                      className="border-white text-black hover:bg-black hover:text-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white" onClick={() => setOpen(false)}>Book a Consultation</Button>
+                    <Button
+                      variant="outline"
+                      className="border-white text-black hover:bg-black hover:text-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white"
+                      onClick={() => setOpen(false)}
+                    >
+                      Book a Consultation
+                    </Button>
                   </Link>
-
                 </div>
               </div>
             </SheetContent>
