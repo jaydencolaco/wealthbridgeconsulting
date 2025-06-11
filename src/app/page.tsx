@@ -8,9 +8,7 @@ import {
   ChevronRight,
   CreditCard,
   DollarSign,
-  Handshake,
   LineChart,
-  PiggyBank,
   Shield,
   TrendingUp,
   Users,
@@ -151,7 +149,7 @@ export default function Home() {
                   Learn more <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
               </div>
-              <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
+              {/* <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Users className="h-6 w-6 text-primary" />
                 </div>
@@ -166,7 +164,7 @@ export default function Home() {
                 >
                   Learn more <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
-              </div>
+              </div> */}
               <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Briefcase className="h-6 w-6 text-primary" />
@@ -183,7 +181,7 @@ export default function Home() {
                   Learn more <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
               </div>
-              <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
+              {/* <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
                 <div className="rounded-full bg-primary/10 p-3">
                   <PiggyBank className="h-6 w-6 text-primary" />
                 </div>
@@ -198,8 +196,8 @@ export default function Home() {
                 >
                   Learn more <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
-              </div>
-              <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
+              </div> */}
+              {/* <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
@@ -214,7 +212,7 @@ export default function Home() {
                 >
                   Learn more <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
-              </div>
+              </div> */}
               <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
                 <div className="rounded-full bg-primary/10 p-3">
                   <BarChart3 className="h-6 w-6 text-primary" />
@@ -231,7 +229,7 @@ export default function Home() {
                   Learn more <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
               </div>
-              <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
+              {/* <div className="flex flex-col items-start gap-2 rounded-lg border p-6 shadow-sm transition-all hover:shadow-md">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Handshake className="h-6 w-6 text-primary" />
                 </div>
@@ -246,7 +244,7 @@ export default function Home() {
                 >
                   Learn more <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
