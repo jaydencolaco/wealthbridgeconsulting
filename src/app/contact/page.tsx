@@ -142,26 +142,7 @@ export default function ContactPage() {
                       required
                     />
                   </div>
-                  {/* <div className="space-y-2">
-                    <Label htmlFor="phone">Phone</Label>
-                    <Input
-                      type="tel"
-                      value={phone}
-                      required
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-                        if (inputValue.length <= 10) {
-                          setPhone(inputValue); // Set only if it's within 10 digits
-                        }
-                      }}
-                      id="phone"
-                      name="phone"
-                      maxLength={10} // Ensures max input length at the HTML level
-                      pattern="\d{10}" // Ensures only 10-digit numbers on form submission
-                      title="Enter a valid 10-digit phone number"
-                      placeholder="Enter your phone number"
-                    />
-                  </div> */}
+                  
                   <div className="space-y-2">
                     <PhoneNumberInput
                       value={phone}
