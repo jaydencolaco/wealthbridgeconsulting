@@ -1,13 +1,13 @@
-"use client"
-import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+"use client";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Testimonial {
-  id: number
-  content: string
-  name: string
-  role: string
+  id: number;
+  content: string;
+  name: string;
+  role: string;
 }
 
 export function TestimonialCarousel() {
@@ -15,9 +15,9 @@ export function TestimonialCarousel() {
     {
       id: 1,
       content:
-        "Wealthbridge Consulting transformed my financial outlook. Their personalized approach and expert advice helped me secure my retirement and grow my investments.",
-      name: "Sarah Johnson",
-      role: "Retirement Planning Client",
+        "I have known Sukain for many years and she has been servicing my banking needs which includes advice on investments, credit cards and other liability products. Her advice has always been very sound and conservative. She can be trusted to provide excellent service and give very safe and sound investment advice.",
+      name: "Mr. Navneet Chopra",
+      role: "General Manager MAS Real Estate",
     },
     {
       id: 2,
@@ -68,42 +68,48 @@ export function TestimonialCarousel() {
       name: "Thomas Wright",
       role: "Business Solutions Client",
     },
-  ]
+  ];
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
-  const itemsPerPage = 3
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    let interval: NodeJS.Timeout;
 
     if (autoplay) {
       interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages)
-      }, 5000)
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
+      }, 5000);
     }
 
-    return () => clearInterval(interval)
-  }, [autoplay, totalPages])
+    return () => clearInterval(interval);
+  }, [autoplay, totalPages]);
 
   const handlePrev = () => {
-    setAutoplay(false)
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalPages) % totalPages)
-  }
+    setAutoplay(false);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalPages) % totalPages);
+  };
 
   const handleNext = () => {
-    setAutoplay(false)
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages)
-  }
+    setAutoplay(false);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
+  };
 
-  const visibleTestimonials = testimonials.slice(currentIndex * itemsPerPage, (currentIndex + 1) * itemsPerPage)
+  const visibleTestimonials = testimonials.slice(
+    currentIndex * itemsPerPage,
+    (currentIndex + 1) * itemsPerPage
+  );
 
   return (
     <div className="relative">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {visibleTestimonials.map((testimonial) => (
-          <div key={testimonial.id} className="flex flex-col gap-2 rounded-lg border p-6 shadow-sm">
+          <div
+            key={testimonial.id}
+            className="flex flex-col gap-2 rounded-lg border p-6 shadow-sm"
+          >
             <div className="flex items-center gap-2">
               {[...Array(5)].map((_, i) => (
                 <svg
@@ -119,17 +125,26 @@ export function TestimonialCarousel() {
                 </svg>
               ))}
             </div>
-            <p className="text-gray-500 dark:text-gray-400">"{testimonial.content}"</p>
+            <p className="text-gray-500 dark:text-gray-400">
+              "{testimonial.content}"
+            </p>
             <div className="mt-4">
               <p className="font-semibold">{testimonial.name}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {testimonial.role}
+              </p>
             </div>
           </div>
         ))}
       </div>
 
       <div className="flex justify-center mt-8 gap-2">
-        <Button variant="outline" size="icon" onClick={handlePrev} className="rounded-full">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handlePrev}
+          className="rounded-full"
+        >
           <ChevronLeft className="h-4 w-4" />
           <span className="sr-only">Previous</span>
         </Button>
@@ -138,21 +153,30 @@ export function TestimonialCarousel() {
           {[...Array(totalPages)].map((_, i) => (
             <button
               key={i}
-              className={`h-2 w-2 rounded-full ${i === currentIndex ? "bg-primary" : "bg-gray-300 dark:bg-gray-700"}`}
+              className={`h-2 w-2 rounded-full ${
+                i === currentIndex
+                  ? "bg-primary"
+                  : "bg-gray-300 dark:bg-gray-700"
+              }`}
               onClick={() => {
-                setAutoplay(false)
-                setCurrentIndex(i)
+                setAutoplay(false);
+                setCurrentIndex(i);
               }}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
 
-        <Button variant="outline" size="icon" onClick={handleNext} className="rounded-full">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handleNext}
+          className="rounded-full"
+        >
           <ChevronRight className="h-4 w-4" />
           <span className="sr-only">Next</span>
         </Button>
       </div>
     </div>
-  )
+  );
 }
