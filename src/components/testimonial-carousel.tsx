@@ -22,52 +22,52 @@ export function TestimonialCarousel() {
     {
       id: 2,
       content:
-        "As a business owner, I needed comprehensive financial solutions. Wealthbridge delivered with their banking services and investment strategies that have helped my company thrive.",
-      name: "Michael Chen",
-      role: "Business Banking Client",
-    },
-    {
-      id: 3,
-      content:
-        "The financial advisors at Wealthbridge Consulting took the time to understand my goals and created a tailored plan that has significantly improved my financial health.",
-      name: "Emily Rodriguez",
-      role: "Financial Advisory Client",
-    },
-    {
-      id: 4,
-      content:
-        "I've worked with several financial advisors over the years, but none have provided the level of service and expertise that I've received from Wealthbridge Consulting.",
-      name: "Robert Thompson",
-      role: "Wealth Management Client",
-    },
-    {
-      id: 5,
-      content:
-        "Their tax planning strategies saved my business thousands of dollars. The team at Wealthbridge truly understands how to optimize financial outcomes.",
-      name: "Jennifer Lee",
-      role: "Tax Planning Client",
-    },
-    {
-      id: 6,
-      content:
-        "The retirement plan Wealthbridge created for me has given me peace of mind knowing my future is secure. Their ongoing support has been invaluable.",
-      name: "David Wilson",
-      role: "Retirement Planning Client",
-    },
-    {
-      id: 7,
-      content:
-        "Wealthbridge's investment team has consistently outperformed my expectations. Their market insights and strategic approach have significantly grown my portfolio.",
-      name: "Amanda Garcia",
-      role: "Investment Management Client",
-    },
-    {
-      id: 8,
-      content:
-        "The business solutions provided by Wealthbridge helped my company navigate a challenging economic period and emerge stronger than before.",
-      name: "Thomas Wright",
-      role: "Business Solutions Client",
-    },
+        "My experience with Sukain Dsouza was nothing short of outstanding. She showed true professionalism, patience, and a genuine commitment to helping me. What stood out most was her responsiveness and attention to detail they didn't just provide answers, they provided solutions. Every interaction felt personal and supportive, which made a real difference. It's rare to come across such dedication and integrity in service today. I would highly recommend her to anyone looking for expertise with a customer-first approach.",
+      name: "Mr. Mahesh Shahdad",
+      role: "Head of Wealth Planning - Europe, Middle East and Africa @ Standard Chartered Bank",
+    }
+    // {
+    //   id: 3,
+    //   content:
+    //     "The financial advisors at Wealthbridge Consulting took the time to understand my goals and created a tailored plan that has significantly improved my financial health.",
+    //   name: "Emily Rodriguez",
+    //   role: "Financial Advisory Client",
+    // },
+    // {
+    //   id: 4,
+    //   content:
+    //     "I've worked with several financial advisors over the years, but none have provided the level of service and expertise that I've received from Wealthbridge Consulting.",
+    //   name: "Robert Thompson",
+    //   role: "Wealth Management Client",
+    // },
+    // {
+    //   id: 5,
+    //   content:
+    //     "Their tax planning strategies saved my business thousands of dollars. The team at Wealthbridge truly understands how to optimize financial outcomes.",
+    //   name: "Jennifer Lee",
+    //   role: "Tax Planning Client",
+    // },
+    // {
+    //   id: 6,
+    //   content:
+    //     "The retirement plan Wealthbridge created for me has given me peace of mind knowing my future is secure. Their ongoing support has been invaluable.",
+    //   name: "David Wilson",
+    //   role: "Retirement Planning Client",
+    // },
+    // {
+    //   id: 7,
+    //   content:
+    //     "Wealthbridge's investment team has consistently outperformed my expectations. Their market insights and strategic approach have significantly grown my portfolio.",
+    //   name: "Amanda Garcia",
+    //   role: "Investment Management Client",
+    // },
+    // {
+    //   id: 8,
+    //   content:
+    //     "The business solutions provided by Wealthbridge helped my company navigate a challenging economic period and emerge stronger than before.",
+    //   name: "Thomas Wright",
+    //   role: "Business Solutions Client",
+    // },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
